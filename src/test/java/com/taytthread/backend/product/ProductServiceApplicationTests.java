@@ -10,6 +10,8 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.testcontainers.containers.MongoDBContainer;
 
+import java.math.BigDecimal;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ProductServiceApplicationTests {
 
@@ -48,6 +50,6 @@ public class ProductServiceApplicationTests {
                 .statusCode(201)
                 .body("id", Matchers.notNullValue())
                 .body("name", Matchers.equalTo("T-Shirt"))
-                .body("price", Matchers.equalTo(99.5F));
+                .body("price", Matchers.equalTo(new BigDecimal("99.50")));
     }
 }
